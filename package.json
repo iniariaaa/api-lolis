@@ -1,0 +1,32 @@
+{
+  "name": "api-zhirrr",
+  "version": "1.1.0",
+  "description": "My Rest Api Projectttttt",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhirrr/Zhirrr-Api.git"
+  },
+  "keywords": [
+    "simple",
+    "api",
+    "rest",
+    "api"
+  ],
+  "author": "Zhirrr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zhirrr/Zhirrr-Api/issues"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "ssl-express-www": "^3.0.7"
+  },
+  "homepage": "https://github.com/Zhirrr/Zhirrr-Api#readme"
+}
