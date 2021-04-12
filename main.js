@@ -11,7 +11,7 @@ data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURICom
          base64 = data.base64
          var buffer = base64.slice(22)
          await fs.writeFileSync('ttp.png', buffer, 'base64')
-    exec(`ffmpeg -i ${__path+'/ttp.png'} ${__path+'/ttp.webp'}`, (err) => {
+    exec(`ffmpeg -i ${__path+'/ttp.png'} ${__path+'/ttp.webp'}`, async (err) => {
     await res.sendFile(__path+'/ttp.webp')
     fs.unlinkSync('ttp.webp')
     })
