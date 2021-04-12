@@ -5,7 +5,7 @@ var router = express.Router();
 var { exec } = require('child_process')
 var fetch = require('node-fetch')
 var fs = require('fs')
-router.get('/ttp', (req, res) => {
+router.get('/ttp', async (req, res) => {
   if (!req.query.q) return res.json({ status: 404, error: 'masukkan param q'})
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
