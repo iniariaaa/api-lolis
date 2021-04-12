@@ -11,7 +11,7 @@ router.get('/ttp', async (req, res) => {
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
          var buffer = base64.slice(22)
-         await fs.writeFileSync('ttp.png', buffer, 'base64')
+         await fs.writeFileSync(`${random}.png`, buffer, 'base64')
     exec(`ffmpeg -i ${__path+`/${random}.png`} ${__path+`/${random}.webp`}`, async (err) => {
     await res.sendFile(__path+`/${random}.webp`)
     })
