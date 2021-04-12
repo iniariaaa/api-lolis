@@ -12,9 +12,8 @@ data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURICom
          var buffer = base64.slice(22)
          await fs.writeFileSync('ttp.png', buffer, 'base64')
     exec(`ffmpeg -i ${__path+'/ttp.png'} ${__path+'/ttp.webp'}`, (err) => {
-    res.sendFile(__path+'/ttp.webp')
+    await res.sendFile(__path+'/ttp.webp')
     fs.unlinkSync('ttp.webp')
-    fs.unlinkSync('ttp.png')
     })
 })
 const ram = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*`
