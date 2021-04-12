@@ -11,10 +11,8 @@ router.get('/ttp', async (req, res) => {
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
          var buffer = base64.slice(22)
-         await fs.writeFileSync(`${random}.png`, buffer, 'base64')
-    exec(`ffmpeg -i ${__path+`/${random}.png`} ${__path+`/${random}.webp`}`, async (err) => {
-    await res.sendFile(__path+`/${random}.webp`)
-    })
+         await fs.writeFileSync(`ttp.png`, buffer, 'base64')
+        res.sendFile(__path+'/ttp.png')
 })
 const ram = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*`
 port = process.env.PORT || 8080 || 5000 || 3000
