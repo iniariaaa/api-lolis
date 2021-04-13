@@ -14,14 +14,34 @@ data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURICom
          await fs.writeFileSync(`ttp.png`, buffer, 'base64')
         res.sendFile(__path+'/ttp.png')
 })
-const ram = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*`
-port = process.env.PORT || 8080 || 5000 || 3000
+function kyun(seconds){
+  function pad(s){
+    return (s < 10 ? '0' : '') + s;
+  }
+  var hours = Math.floor(seconds / (60*60));
+  var minutes = Math.floor(seconds % (60*60) / 60);
+  var seconds = Math.floor(seconds % 60);
+
+  return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
+}
+
 router.get('/', (req, res) => {
-    config = {
-        status: true,
+date = new Date
+var jam = date.getHours()
+var menit = date.getMinutes()
+var detik = date.getSeconds()
+var ram = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
+var cpu = require('os').cpus()
+port = process.env.PORT || 8080 || 5000 || 3000    
+      config = {
+        status: 'active',
+        url: 'https://recoders-area.caliph.repl.co',
         info: {
         memory: ram,
-        port: port
+        port: port,
+        cpu: cpu[0].model,
+        timeserver: jam+menit+detik,
+        uptime: kyun(process.uptime())
         }
     }
     res.json(config)
