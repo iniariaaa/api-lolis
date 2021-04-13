@@ -14,6 +14,13 @@ data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURICom
          await fs.writeFileSync(`ttp.png`, buffer, 'base64')
         res.sendFile(__path+'/ttp.png')
 })
+router.get('/dadu', async (req, res) => {
+      random = Math.floor(Math.random() * 6) + 1
+      hasil = 'https://www.random.org/dice/dice' + random + '.png'
+     data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync('dadu.png', data)
+        res.sendFile(__path+'/dadu.png')
+})
 function kyun(seconds){
   function pad(s){
     return (s < 10 ? '0' : '') + s;
@@ -24,7 +31,15 @@ function kyun(seconds){
 
   return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
 }
-
+router.get('/repeat', (req, res) => {
+const repeat = (text, total) => {
+			return text.repeat(total)
+			}
+  if (!req.query.total) return res.json({ error: 'Masukkan Parameter total'})
+  if (!req.query.text) return res.json({ error: 'Masukkan Parameter text'})
+ if(isNaN(req.query.total)) return res.json({error: 'Jumlah Harus berupa angka!'})
+  res.json({ status: true, result: repeat(req.query.text, req.query.total) })
+})
 router.get('/', (req, res) => {
 date = new Date
 var jam = date.getHours()
