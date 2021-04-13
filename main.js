@@ -40,7 +40,7 @@ port = process.env.PORT || 8080 || 5000 || 3000
         memory: ram,
         port: port,
         cpu: cpu[0].model,
-        timeserver: jam+menit+detik,
+        timeserver: `${jam}:${menit}:${detik}`,
         uptime: kyun(process.uptime())
         }
     }
