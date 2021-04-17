@@ -7,12 +7,12 @@ var fetch = require('node-fetch')
 var fs = require('fs')
 router.get('/ttp', async (req, res) => {
   if (!req.query.q) return res.json({ status: 404, error: 'masukkan param q'})
-  random = new Date
+  random = Math.floor(Math.random() * 19338)
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
          var buffer = base64.slice(22)
          await fs.writeFileSync(__path+`/cache/${random}.png`, buffer, 'base64')
-         exec(`ffmpeg -i ${__path+`/cache/${random}.png`} ${__path+`/cache/${random}.png`}`, (err) => {
+         exec(`ffmpeg -i ${__path+`/cache/${random}.png`} ${__path+`/cache/${random}.webp`}`, (err) => {
         res.sendFile(__path+`/cache/${random}.webp`)
         })
 })
