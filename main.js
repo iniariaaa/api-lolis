@@ -11,11 +11,9 @@ router.get('/ttp', async (req, res) => {
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
          var buffer = base64.slice(22)
-         await fs.writeFileSync(__path+'/cache/ttp.png', buffer, 'base64')
-         exec(`ffmpeg -i ${__path+'/cache/ttp.png'} ${__path+'/cache/ttp.png'}`, (err) => {
-         fs.unlinkSync(__path+'/cache/ttp.png')
-        res.sendFile(__path+'/cache/ttp.webp')
-        fs.unlinkSync(__path+'/cache/ttp.webp')
+         await fs.writeFileSync(__path+`/cache/${random}.png`, buffer, 'base64')
+         exec(`ffmpeg -i ${__path+`/cache/${random}.png`} ${__path+`/cache/${random}.png`}`, (err) => {
+        res.sendFile(__path+`/cache/${random}.webp`)
         })
 })
 router.get('/dadu', async (req, res) => {
