@@ -15,7 +15,7 @@ data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURICom
          exec(`ffmpeg -i ${__path+'/cache/ttp.png'} ${__path+'/cache/ttp.png'}`, (err) => {
          fs.unlinkSync(__path+'/cache/ttp.png')
         res.sendFile(__path+'/cache/ttp.webp')
-        fs.unlinkSync(__path+'/cache/ttp.webp'')
+        fs.unlinkSync(__path+'/cache/ttp.webp')
         })
 })
 router.get('/dadu', async (req, res) => {
