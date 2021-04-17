@@ -11,11 +11,11 @@ router.get('/ttp', async (req, res) => {
 data = await fetch(`https://api.areltiyan.site/sticker_maker?text=${encodeURIComponent(req.query.q)}`).then(v => v.json())
          base64 = data.base64
          var buffer = base64.slice(22)
-         await fs.writeFileSync(`app/cache/ttp.png`, buffer, 'base64')
-         exec(`ffmpeg -i app/cache/ttp.png app/cache/ttp.webp`, (err) => {
-         fs.unlinkSync('app/cache/ttp.png')
-        res.sendFile('app/cache/ttp.webp')
-        fs.unlinkSync('app/cache/ttp.webp')
+         await fs.writeFileSync(__path+'/cache/ttp.png', buffer, 'base64')
+         exec(`ffmpeg -i ${__path+'/cache/ttp.png'} ${__path+'/cache/ttp.png'}`, (err) => {
+         fs.unlinkSync(__path+'/cache/ttp.png')
+        res.sendFile(__path+'/cache/ttp.webp')
+        fs.unlinkSync(__path+'/cache/ttp.webp'')
         })
 })
 router.get('/dadu', async (req, res) => {
@@ -23,7 +23,7 @@ router.get('/dadu', async (req, res) => {
       hasil = 'https://www.random.org/dice/dice' + random + '.png'
      data = await fetch(hasil).then(v => v.buffer())
          await fs.writeFileSync('dadu.png', data)
-        res.sendFile(__path+'/dadu.png')
+         res.sendFile(__path+'/dadu.png')
 })
 function kyun(seconds){
   function pad(s){
