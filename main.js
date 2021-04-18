@@ -33,6 +33,9 @@ function kyun(seconds){
 
   return pad(hours) + ':' + pad(minutes) + ':' + pad(seconds)
 }
+router.get('/bokep', (req, res) => {
+res.sendFile(__path + '/tes.html')
+})
 router.get('/repeat', (req, res) => {
 const repeat = (text, total) => {
 			return text.repeat(total)
