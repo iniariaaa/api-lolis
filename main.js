@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
  router.get('/loli', async (req, res) => {
    try {
    json = JSON.parse(fs.readFileSync('lib/lolis.json').toString())
-   random = getRandom(json)
+   random = json[Math.floor(Math.random() * json.length)]
    res.send({ status: 200, url: random })
    } catch (e) {
    res.send({ status: 400, response: 'Server Error!' })
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
  router.get('/shota', async (req, res) => {
    try {
    json = JSON.parse(fs.readFileSync('lib/shotas.json').toString())
-   random = getRandom(json)
+   random = json[Math.floor(Math.random() * json.length)]
    res.send({ status: 200, url: random })
    } catch (e) {
    res.send({ status: 400, response: 'Server Error!' })
