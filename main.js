@@ -41,7 +41,10 @@ router.all('/', async (req, res) => {
    }
    })
    router.all('*', async (req, res) => {
-   res.status(404)
+   res.status(404).json({
+            status:404
+            error: 'Page you are looking for is not found'
+        })
 })
   
 
