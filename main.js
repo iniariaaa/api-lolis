@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
    })
  router.get('/shota', async (req, res) => {
    try {
-   json = JSON.parse(fs.readFileSync('lib/lolis.json'))
+   json = JSON.parse(fs.readFileSync('lib/shotas.json'))
    random = getRandom(json)
    res.send({ status: 200, url: random })
    } catch (e) {
