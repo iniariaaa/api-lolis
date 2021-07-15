@@ -18,11 +18,11 @@ async function getRandom(nans) {
   he = nans[Math.floor(Math.random() * nans.length)]
    return he
 }
-router.get('/', async (req, res) => {
+router.all('/', async (req, res) => {
    res.sendFile(__path + '/api.html')
    })
 
- router.get('/loli', async (req, res) => {
+ router.all('/loli', async (req, res) => {
    try {
    json = JSON.parse(fs.readFileSync('lib/lolis.json').toString())
    random = json[Math.floor(Math.random() * json.length)]
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
    res.send({ status: 400, response: 'Server Error!' })
    }
    })
- router.get('/shota', async (req, res) => {
+ router.all('/shota', async (req, res) => {
    try {
    json = JSON.parse(fs.readFileSync('lib/shotas.json').toString())
    random = json[Math.floor(Math.random() * json.length)]
@@ -40,6 +40,9 @@ router.get('/', async (req, res) => {
    res.send({ status: 400, response: 'Server Error!' })
    }
    })
+   router.all('*', async (req, res) => {
+   res.status(404)
+})
   
 
 module.exports = router
