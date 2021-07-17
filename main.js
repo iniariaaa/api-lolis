@@ -40,6 +40,15 @@ router.all('/', async (req, res) => {
    res.send({ status: 400, response: 'Server Error!' })
    }
    })
+   router.all('/nsfwloli', async (req, res) => {
+   try {
+   json = JSON.parse(fs.readFileSync('lib/nsfwlolis.json').toString())
+   random = json[Math.floor(Math.random() * json.length)]
+   res.send({ status: 200, url: random })
+   } catch (e) {
+   res.send({ status: 400, response: 'Server Error!' })
+   }
+   })
    router.all('*', async (req, res) => {
    res.status(404).json({
             status:404,
